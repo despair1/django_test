@@ -1,8 +1,11 @@
 <html>
 	<head>
-		<title>Input names</title>
-		<script src="/static/js/phaser.min.js"></script>
-        <script src="/static/js/test_panel.js"></script>
+		{% load staticfiles %}
+		<meta charset="UTF-8" />
+        <title>test smuta</title>
+		<script src="{% static 'js/phaser.min.js' %}"></script>
+        <script src="{% static 'js/test_panel.js' %}"></script>
+        <script src="{% static 'js/right_panel.js' %}"></script>
 	</head>
 	<body>
 		{% if error_message %}
