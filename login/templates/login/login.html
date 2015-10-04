@@ -2,6 +2,9 @@
 <html>
 <head></head>
 <body>
+{% if error_message %}
+			<p> {{error_message }} </p>
+{% endif %}  
 <form action="/auth/" method="POST"> {% csrf_token %}
     
         <label for="email">Email:</label>

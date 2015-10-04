@@ -4,7 +4,9 @@ from django.http import JsonResponse
 
 # Create your views here.
 def index(request):
+    print request.user.username,"uname"
     return render(request,"game/index.html",{"error_message1":"",
+                                             'username':request.user.username,
                                                  }) 
     return HttpResponse("you in index")
 

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+{% if error_message %}
+			<p> {{error_message }} </p>
+{% endif %}  
+
+<p> Registration </p>
+<form action="{% url 'login:sign_up' %}" method="POST"> 
+		{% csrf_token %}
+    	{{ form.as_p }} <br>
+    <button type="submit" name="submit" value="submit-value">Sign up</button>
+</form>
+</body>
+</html>
