@@ -19,4 +19,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r"^game/",include("game.urls",namespace="game")), 
+    url(r"^login/",include("login.urls",namespace="login")), 
 ]
