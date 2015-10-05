@@ -105,3 +105,4 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = ( "/home/despair/evedev/phaser_test/",
                      )
+LOGIN_URL = "/login/signin"

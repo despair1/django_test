@@ -9,7 +9,9 @@ from login import views
 from django.conf.urls import  url
 
 
-urlpatterns=(url(r"^login",views.loginview,name="loginview"),
+urlpatterns=(#url(r"^login",views.loginview,name="loginview"),
              #url(r"^test.json$",views.test_json),
              url(r'^signup/', views.sign_up_in,name="sign_up"),
+             url(r'^signin/', views.sign_in,name="sign_in"),
+             url(r'^logout/', views.logout_view,name="logout"),
              )

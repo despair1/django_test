@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+{% if error_message %}
+			<p> {{error_message }} </p>
+{% endif %}  
+
+<p> Log in </p>
+<p> {{username}} </p>
+<form action="{% url 'login:sign_in' %}" method="POST"> 
+		{% csrf_token %}
+    	{{ form.as_p }} <br>
+    <button type="submit" name="submit" value="submit-value">Sign in</button>
+</form>
+<a href="{% url 'login:logout' %}"> logout </a><br>
+<a href="{% url 'login:sign_up' %}"> sign_up </a>
+</body>
+</html>
