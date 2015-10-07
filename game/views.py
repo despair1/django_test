@@ -4,6 +4,8 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import requires_csrf_token
 from django.views.decorators.csrf import csrf_protect
+#from django.utils import simplejson
+import json
 # Create your views here.
 
 @csrf_protect
@@ -25,7 +27,8 @@ def recive_json(request):
               [1,2,50],
               [2,3,15],
               [3,7,45]]}
-    print "forbiden"
+    jd=json.loads(request.body)
+    print "forbiden",jd
     #return HttpResponse("you in index")
     return JsonResponse(j)
 def units_json(request):
