@@ -10,4 +10,6 @@ from django.conf.urls import  url
 
 urlpatterns=(url(r"^$",views.index,name="index"),
              url(r"^test.json$",views.test_json),
+             url(r"^units.json$",views.units_json),
+             url(r"^send.json$",views.recive_json),
              )
