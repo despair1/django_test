@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from django.db import IntegrityError 
 from django.core.validators import RegexValidator
 from login.forms import sigh_up_form,sign_in_form
+from game.models import player
 
 def loginview(request):
     c = {}
@@ -56,6 +57,9 @@ def sign_up_in(request):
                          email=f.cleaned_data["email"])
             user.set_password(f.cleaned_data["password"])
             user.save()
+            p=player(name=f.cleaned_data["username"],
+                     user=user)
+            p.save()
             u=authenticate(username=user.username,
                            password=f.cleaned_data["password"])
             print u
