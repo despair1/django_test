@@ -10,13 +10,14 @@ from django.db import connection
 
 def send_units_list(request):
     cursor=connection.cursor()
-    j={"max":50,
+    j={}
+    """"j={"max":50,
        "own":[
               [1,2,50],
               [2,3,15],
-              [3,7,45]]}
+              [3,7,45]]}"""
     p=player.objects.get(user=request.user)
-    print p.user.pk
+    #print p.user.pk
     cursor.execute("""select max(a1) from (
     select count(*) as a1 from game_unit 
     where user_id==%s group by x_pos,y_pos);""",
@@ -25,8 +26,15 @@ def send_units_list(request):
     j["max"]=cursor.fetchone()[0]
     cursor.execute("""select x_pos,y_pos,count(*) from game_unit
     where user_id==%s group by x_pos,y_pos;""",[p.user.pk])
-    print "bfg2"#,cursor.fetchall()
-    for i in connection.queries:
-        print i
+    #print "bfg2"#,cursor.fetchall()
+    #for i in connection.queries:
+    #    print i
     j["own"]=cursor.fetchall()
+    cursor.execute("""select id,x_pos,y_pos from game_unit
+    where user_id==%s and in_move==0 order by id;""",[p.user.pk])
+    j["own_units_pos"]=cursor.fetchall()
+    #print j["own_units_pos"]
+    """"q=unit.objects.filter(user=p.user.pk)
+    for i in q:
+        print i"""
     return JsonResponse(j)
