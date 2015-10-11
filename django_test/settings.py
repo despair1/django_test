@@ -39,6 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'game',
     'login',
+    'djcelery',
+    'kombu.transport.django',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -78,6 +80,14 @@ WSGI_APPLICATION = 'django_test.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'm1',
+        'USER': 'm1user',
+        'PASSWORD': 'pass123word',
+        'HOST': 'localhost',
+        'PORT': '',
+    },
+    'default1': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
@@ -106,3 +116,22 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = ( "/home/despair/evedev/phaser_test/",
                      )
 LOGIN_URL = "/login/signin"
+
+import djcelery
+djcelery.setup_loader()
+BROKER_URL = 'django://'
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
+
+from datetime import timedelta
+
+CELERYBEAT_SCHEDULE = {
+    'add-every-30-seconds': {
+        'task': 'game.tasks.add5',
+        'schedule': timedelta(seconds=3),
+        #'args': (16, 16)
+    },
+}
+
+CELERY_TIMEZONE = 'UTC'
+CELERY_RESULT_BACKEND='djcelery.backends.database:DatabaseBackend'
+
