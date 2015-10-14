@@ -26,8 +26,13 @@ SECRET_KEY = 'c2m*&2)u#0-c1kolj0p*ka$+qz-ovv(5y^!1ou==&!5b4=d@n1'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
+"""
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.static',
+    'django.core.context_processors.request',
+    'ws4redis.context_processors.default',
+)"""
 # Application definition
 
 INSTALLED_APPS = (
@@ -39,8 +44,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'game',
     'login',
-    'djcelery',
-    'kombu.transport.django',
+    #'djcelery',
+    #'kombu.transport.django',
+    'ws4redis',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -67,13 +73,21 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #'django.contrib.auth.context_processors.auth',
+                #'django.core.context_processors.static',
+                #'ws4redis.context_processors.default',
+                'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.static',
+    'django.core.context_processors.request',
+    'ws4redis.context_processors.default',
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'django_test.wsgi.application'
-
+#WSGI_APPLICATION = 'django_test.wsgi.application'
+WSGI_APPLICATION = 'ws4redis.django_runserver.application'
+WSGI_APPLICATION = 'ws4redis.django_runserver.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -117,6 +131,12 @@ STATICFILES_DIRS = ( "/home/despair/evedev/phaser_test/",
                      )
 LOGIN_URL = "/login/signin"
 
+WEBSOCKET_URL = '/ws/'
+
+WS4REDIS_EXPIRE = 600
+
+WS4REDIS_PREFIX = 'djt'
+"""
 import djcelery
 djcelery.setup_loader()
 BROKER_URL = 'django://'
@@ -134,4 +154,6 @@ CELERYBEAT_SCHEDULE = {
 
 CELERY_TIMEZONE = 'UTC'
 CELERY_RESULT_BACKEND='djcelery.backends.database:DatabaseBackend'
+"""
+
 
