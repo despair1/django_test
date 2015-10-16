@@ -9,6 +9,7 @@ class unit(models.Model):
     name = models.CharField(max_length=10)
     x_pos = models.IntegerField()
     y_pos = models.IntegerField()
-    in_move = models.BooleanField()
+    #in_move = models.BooleanField()
+    in_move = models.DateTimeField(null=True)
     user = models.ForeignKey(player)
     

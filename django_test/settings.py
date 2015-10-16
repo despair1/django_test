@@ -136,6 +136,8 @@ WEBSOCKET_URL = '/ws/'
 WS4REDIS_EXPIRE = 600
 
 WS4REDIS_PREFIX = 'djt'
+from game.temp_utils.get_allowed_chanels import get_allowed_channels
+WS4REDIS_ALLOWED_CHANNELS = get_allowed_channels
 """
 import djcelery
 djcelery.setup_loader()

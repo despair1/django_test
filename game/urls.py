@@ -16,4 +16,5 @@ urlpatterns=(url(r"^$",views.index,name="index"),
              url(r"^units.json$",send_units_list.send_units_list),
              url(r"^send.json$",views.recive_json),
              url(r"^add_unit.json$",add_units.add_unit),
+             url(r"^move_unit.json$",add_units.move_unit),
              )
