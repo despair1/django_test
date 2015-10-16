@@ -11,6 +11,9 @@ from django.conf.global_settings import X_FRAME_OPTIONS
 from django.db import connection
 import sys
 from django.db import IntegrityError
+from datetime import datetime,timedelta
+#from django.utils import timezone
+
 def add_unit(request):
     jd=json.loads(request.body)
     #print "ai ai ai",jd
@@ -41,6 +44,8 @@ def move_unit(request):
     if u.user == p:
         u.x_pos=jd['x']
         u.y_pos=jd['y']
+        #d=timedelta(seconds=5)
+        u.in_move=datetime.now()+timedelta(seconds=5)
         u.save()
         return JsonResponse({})
     
