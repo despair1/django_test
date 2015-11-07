@@ -13,7 +13,7 @@ from game.models import unit,player,combat_status
 from datetime import datetime,timedelta
 #from django.utils import timezone
 from django.db import connection
-from game.temp_utils.found_combat import found_combat
+from game.temp_utils.combat.found_combat import found_combat
 
 class Command(BaseCommand):
     help = " update units representation "
