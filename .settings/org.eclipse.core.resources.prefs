@@ -9,6 +9,7 @@ encoding//game/temp_utils/add_units.py=utf-8
 encoding//game/temp_utils/combat/found_combat.py=utf-8
 encoding//game/temp_utils/combat/load_duel.py=utf-8
 encoding//game/temp_utils/get_allowed_chanels.py=utf-8
+encoding//game/temp_utils/send_battles_list.py=utf-8
 encoding//game/temp_utils/send_units_list.py=utf-8
 encoding//game/urls.py=utf-8
 encoding//login/forms.py=utf-8

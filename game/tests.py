@@ -5,7 +5,7 @@ from game.temp_utils.add_units import add_unit,move_unit
 from game.temp_utils.send_units_list import send_units_list
 import json
 from game.models import unit
-from game.temp_utils.found_combat import found_combat
+from game.temp_utils.combat.found_combat import found_combat
 # Create your tests here.
 
 def finalize_move():
